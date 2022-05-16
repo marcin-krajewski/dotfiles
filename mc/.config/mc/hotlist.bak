@@ -1,0 +1,1 @@
+ENTRY "vagrant oracle home directory" URL "/sh://oracle@localhost:2222/home/oracle"
