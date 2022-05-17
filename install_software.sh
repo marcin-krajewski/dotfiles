@@ -4,15 +4,15 @@
 packages=(vim vifm git termite zsh mc)
 
 if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
-  sudo apt-get update
-  sudo apt-get install "${packages[@]}"
+  apt-get update
+  apt-get install "${packages[@]}"
 elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
-  sudo pacman -Syu
-  sudo pacman -S "${packages[@]}"
+  pacman -Syu
+  pacman -S "${packages[@]}"
 elif [ -e "/usr/bin/yum" ]; then # RPM-based distros
-  sudo yum update
-  sudo yum install "${packages[@]}"
+  yum update
+  yum install "${packages[@]}"
 elif [ -e "/usr/local/bin/brew" ]; then # homebrew
-  sudo brew update
-  sudo brew install "${packages[@]}"
+  brew update
+  brew install "${packages[@]}"
 fi
