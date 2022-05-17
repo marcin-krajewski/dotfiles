@@ -5,7 +5,12 @@ packages=(vim vifm git termite zsh mc)
 
 if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
   apt-get update
-  echo $packages | xargs -n 1 apt-get install
+  apt-get install vim
+  apt-get install vifm
+  apt-get install git
+  apt-get install termite
+  apt-get install zsh
+  apt-get install mc
 elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
   pacman -Syu
   pacman -S "${packages[@]}"
