@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./install_software.sh
+
 stow -R --target ~ mc
 stow -R --target ~ termite
 stow -R --target ~ vim
