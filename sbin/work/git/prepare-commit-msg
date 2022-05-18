@@ -1,0 +1,41 @@
+#!/bin/bash
+
+TMP_FILE=/tmp/git-commit-message
+> $TMP_FILE
+
+#GIT_DIFF_CACHED=$(git diff --cached)
+
+BRANCH_NAME=$(git name-rev --name-only HEAD)
+SHORT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD | sed -e 's#.*/\([A-Za-z]*\)-\([0-9]*\).*#\1-\2#')
+JIRA_ID=$(git rev-parse --abbrev-ref HEAD | sed -e 's#\(.*/\)\?\([A-Z]*\)-\([0-9]\+\).*#\2-\3#')
+
+frame.sh -s "Branch/JIRA names" -l 80 >> $TMP_FILE
+# write full branch name to the temp file
+echo -n "#$BRANCH_NAME" >> $TMP_FILE
+
+# ... and new line
+echo "" >> $TMP_FILE
+
+# write shorter branch name to the temp file and write rest of content
+echo "#$SHORT_BRANCH_NAME " >> $TMP_FILE
+
+# write local branch name
+echo "#$JIRA_ID " >> $TMP_FILE
+echo "" >> $TMP_FILE
+
+####################################################################################################
+#                                       NPM commit messages                                        #
+####################################################################################################
+frame.sh -s "npm versions/package-lock" -l 80 >> $TMP_FILE
+echo "#$JIRA_ID bump versions" >> $TMP_FILE
+echo "#$JIRA_ID bump package-lock.json" >> $TMP_FILE
+echo "" >> $TMP_FILE
+
+frame.sh -s "Original commit message file" -l 80 >> $TMP_FILE
+cat - "$1" >> $TMP_FILE
+
+# print commented git diff (cached) output to the commit file
+# sed replaces beginning of the line with comment character '#' followed by space
+# echo "$GIT_DIFF_CACHED" | sed -e 's/^/# /g' >> $TMP_FILE
+
+mv $TMP_FILE "$1"

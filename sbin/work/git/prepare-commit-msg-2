@@ -1,0 +1,24 @@
+#!/bin/bash
+
+BRANCH_NAME0=$(git config local.branch.name)
+BRANCH_NAME1=$(git name-rev --name-only HEAD)
+BRANCH_NAME2=$(git rev-parse --abbrev-ref HEAD)
+# BRANCH_NAME2=$(git name-rev --name-only HEAD | sed -e 's/\([A-Z]*\)\(-[0-9]*\).*/\1\2/')
+BRANCH_NAME3=$(git rev-parse --abbrev-ref HEAD | sed -e 's#.*/\([A-Za-z]*\)-\([0-9]*\).*#\1-\2#')
+
+# write full branch name to the temp file
+echo -n "#$BRANCH_NAME1" > /tmp/out
+
+# ... and new line
+echo "" >> /tmp/out
+
+# write shorter branch name to the temp file and write rest of content
+echo "#$BRANCH_NAME2 " >> /tmp/out
+echo "#$BRANCH_NAME3 " >> /tmp/out
+# echo "" >> /tmp/out
+
+# write local branch name
+echo "#$BRANCH_NAME0 " >> /tmp/out
+echo "" >> /tmp/out
+
+echo -n "#"|cat - "$1" >> /tmp/out && mv /tmp/out "$1"
