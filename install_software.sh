@@ -52,13 +52,16 @@ echo "**************************************************************************
 
 cd ~
 
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+if [ ! -d ".zprezto" ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-ln -fs .zprezto/runcoms/zlogin .zlogin
-ln -fs .zprezto/runcoms/zlogout .zlogout
-ln -fs .zprezto/runcoms/zpreztorc .zpreztorc
-ln -fs .zprezto/runcoms/zprofile .zprofile
-ln -fs .zprezto/runcoms/zshenv .zshenv
-ln -fs .zprezto/runcoms/zshrc .zshrc
+  ln -fs .zprezto/runcoms/zlogin .zlogin
+  ln -fs .zprezto/runcoms/zlogout .zlogout
+  ln -fs .zprezto/runcoms/zpreztorc .zpreztorc
+  ln -fs .zprezto/runcoms/zprofile .zprofile
+  ln -fs .zprezto/runcoms/zshenv .zshenv
+  ln -fs .zprezto/runcoms/zshrc .zshrc
 
-chsh -s /bin/zsh
+  chsh -s /bin/zsh
+fi
+
