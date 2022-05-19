@@ -8,9 +8,9 @@ function _update() {
   if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
     apt-get update
   elif [ -e "/usr/bin/yay" ]; then # Arch Linux
-    yay -Sy
+    yay -Syy
   elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
-    pacman -Sy
+    pacman -Syy
   elif [ -e "/usr/bin/yum" ]; then # RPM-based distros
     yum update
   elif [ -e "/usr/local/bin/brew" ]; then # homebrew
@@ -23,6 +23,8 @@ function _install() {
   echo " > Installing package $package"
   if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
     apt-get install $package
+  elif [ -e "/usr/bin/yay" ]; then # Arch Linux
+    yay -S $package
   elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
     pacman -S $package
   elif [ -e "/usr/bin/yum" ]; then # RPM-based distros
@@ -34,6 +36,7 @@ function _install() {
 
 _update
 _install yay
+_install stow
 _install vim
 _install vifm
 _install git
