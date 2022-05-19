@@ -79,5 +79,14 @@ if [ ! -d ".zprezto" ]; then
   ln -fs .zprezto/runcoms/zshrc .zshrc
 
   chsh -s /bin/zsh
+
+  cp dotfiles/zprezto/.zsh.local.zsh ~
+
+  if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  fi
+
+  cat dotfiles/zprezto/.zshrc.modification.zsh >> .zshrc
+
 fi
 
