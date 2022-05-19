@@ -2,6 +2,9 @@
 
 ./install_software.sh
 
+mkdir -p ~/.local
+mkdir -p ~/.config
+
 function _stow() {
   target=$1
   package=$2

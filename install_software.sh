@@ -1,6 +1,8 @@
 # paci         - install one or more packages
 # pacu         - upgrade all packages to their newest version
 
+cd ~
+
 packages=(vim vifm git termite zsh mc)
 
 function _update() {
@@ -35,7 +37,14 @@ function _install() {
 }
 
 _update
-_install yay
+
+mkdir -p .aur && cd .aur
+git clone https://aur.archlinux.org/yay-git.git
+cd yay-git
+makepkg -si
+
+cd ~
+
 _install stow
 _install vim
 _install vifm
