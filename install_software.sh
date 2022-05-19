@@ -86,7 +86,7 @@ if [ ! -d ".zprezto" ]; then
 #    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 #  fi
 
-  cat dotfiles/zprezto/.zshrc.modification.zsh >> .zshrc
+  cat dotfiles/zprezto/.zshrc.modification.zsh >> .zpreztorc
 
 fi
 
