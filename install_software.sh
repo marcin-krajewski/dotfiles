@@ -82,9 +82,9 @@ if [ ! -d ".zprezto" ]; then
 
   cp dotfiles/zprezto/.zsh.local.zsh ~
 
-  if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  fi
+#  if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+#    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+#  fi
 
   cat dotfiles/zprezto/.zshrc.modification.zsh >> .zshrc
 
