@@ -10,9 +10,9 @@ function _update() {
   if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
     apt-get update
   elif [ -e "/usr/bin/yay" ]; then # Arch Linux
-    yay -Syy
+    yay -Syy --noconfirm
   elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
-    pacman -Syy
+    pacman -Syy --noconfirm
   elif [ -e "/usr/bin/yum" ]; then # RPM-based distros
     yum update
   elif [ -e "/usr/local/bin/brew" ]; then # homebrew
@@ -26,9 +26,9 @@ function _install() {
   if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
     apt-get install $package
   elif [ -e "/usr/bin/yay" ]; then # Arch Linux
-    yay -S $package
+    yay -S $package --noconfirm
   elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
-    pacman -S $package
+    pacman -S $package --noconfirm
   elif [ -e "/usr/bin/yum" ]; then # RPM-based distros
     yum install $package
   elif [ -e "/usr/local/bin/brew" ]; then # homebrew
