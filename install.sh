@@ -12,6 +12,7 @@ function _stow() {
 _stow ~ mc
 _stow ~ termite
 _stow ~ vim
+_stow ~ rofi
 #_stow ~ git
 _stow ~ vifm
 

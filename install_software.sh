@@ -7,6 +7,8 @@ function _update() {
   echo "Update software repositories"
   if [ -e "/usr/bin/apt-get" ]; then # Apt-based distros (Debian, Ubuntu, etc.)
     apt-get update
+  elif [ -e "/usr/bin/yay" ]; then # Arch Linux
+    yay -Syu
   elif [ -e "/usr/bin/pacman" ]; then # Arch Linux
     pacman -Syu
   elif [ -e "/usr/bin/yum" ]; then # RPM-based distros
@@ -31,13 +33,15 @@ function _install() {
 }
 
 _update
- _install vim
- _install vifm
- _install git
- _install termite
- _install zsh
- _install mc
- _install mc
+_install yay
+_install vim
+_install vifm
+_install git
+_install termite
+_install zsh
+_install mc
+_install mc
+_install rofi
 
 echo "************************************************************************************************************************"
 echo "*                                                                                                                      *"
