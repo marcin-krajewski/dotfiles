@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.local
+cd ~/.dotfiles
+
+mkdir -p ~/.local/.share
 mkdir -p ~/.config
 
 function _stow() {
@@ -16,5 +18,6 @@ _stow ~ vim
 _stow ~ rofi
 #_stow ~ git
 _stow ~ vifm
+_stow ~ font
 
 _stow ~/.local sbin

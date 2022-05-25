@@ -25,13 +25,13 @@ if [ ! -d ".zprezto" ]; then
 
   chsh -s /bin/zsh
 
-  cp dotfiles/zprezto/.zsh.local.zsh ~
+  cp .dotfiles/zprezto/.zsh.local.zsh ~
 
 #  if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 #    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 #  fi
 
-  cat dotfiles/zprezto/.zshrc.modification.zsh >> .zpreztorc
+  cat .dotfiles/zprezto/.zshrc.modification.zsh >> .zpreztorc
 
 fi
 
