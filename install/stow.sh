@@ -1,6 +1,4 @@
-#!/bin/bash
-
-./install_software.sh
+#!/usr/bin/env bash
 
 mkdir -p ~/.local
 mkdir -p ~/.config
